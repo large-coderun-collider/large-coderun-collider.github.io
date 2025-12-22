@@ -1,0 +1,27 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">LCRC mark</title>
+  <defs>
+    <linearGradient id="ringGrad2" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#5B2EFF"></stop>
+      <stop offset="100%" stop-color="#2a1dbd"></stop>
+    </linearGradient>
+    <radialGradient id="sparkGrad2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6A00"></stop>
+      <stop offset="100%" stop-color="rgba(255,106,0,0)"></stop>
+    </radialGradient>
+    <filter id="soft2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.8"></feGaussianBlur>
+    </filter>
+  </defs>
+
+  <rect width="256" height="256" rx="28" fill="#0B0F14"></rect>
+  <circle cx="128" cy="128" r="82" fill="none" stroke="url(#ringGrad2)" stroke-width="12"></circle>
+  <circle cx="128" cy="128" r="62" fill="none" stroke="rgba(91,46,255,.35)" stroke-width="4"></circle>
+
+  <!-- beam -->
+  <path d="M64,172 C94,96 156,90 192,116" fill="none" stroke="#FF6A00" stroke-width="10" stroke-linecap="round"></path>
+
+  <!-- spark -->
+  <circle cx="192" cy="116" r="12" fill="#FF6A00"></circle>
+  <circle cx="192" cy="116" r="26" fill="url(#sparkGrad2)" filter="url(#soft2)"></circle>
+</svg>

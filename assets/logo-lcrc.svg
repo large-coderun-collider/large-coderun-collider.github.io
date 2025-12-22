@@ -1,0 +1,41 @@
+<svg width="820" height="170" viewBox="0 0 820 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Large Code-Run Collider — logo</title>
+  <desc id="desc">Clean wordmark LCRC with collider ring and collision spark in purple and orange.</desc>
+
+  <!-- Palette -->
+  <!-- purple #5B2EFF, orange #FF6A00, ink #0B0F14 -->
+  <defs>
+    <linearGradient id="ringGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#5B2EFF"></stop>
+      <stop offset="100%" stop-color="#2a1dbd"></stop>
+    </linearGradient>
+    <radialGradient id="sparkGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6A00"></stop>
+      <stop offset="100%" stop-color="rgba(255,106,0,0)"></stop>
+    </radialGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.6"></feGaussianBlur>
+    </filter>
+  </defs>
+
+  <!-- Wordmark: LCRC -->
+  <g fill="#EDEDF5" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto" letter-spacing="1">
+    <text x="200" y="72" font-size="72" font-weight="800">LCRC</text>
+    <text x="200" y="128" font-size="26" font-weight="600" fill="rgba(237,237,245,.86)">Large Code-Run Collider</text>
+  </g>
+
+  <!-- Icon to the left: ring + beam + spark -->
+  <g transform="translate(20,20)">
+    <!-- outer ring -->
+    <circle cx="65" cy="65" r="58" fill="none" stroke="url(#ringGrad)" stroke-width="10"></circle>
+    <!-- inner ring (thin) -->
+    <circle cx="65" cy="65" r="42" fill="none" stroke="rgba(91,46,255,.35)" stroke-width="3"></circle>
+
+    <!-- beam (arc) -->
+    <path d="M25,90 C50,30 98,28 118,54" fill="none" stroke="#FF6A00" stroke-width="8" stroke-linecap="round"></path>
+
+    <!-- collision spark -->
+    <circle cx="118" cy="54" r="10" fill="#FF6A00"></circle>
+    <circle cx="118" cy="54" r="22" fill="url(#sparkGrad)" filter="url(#soft)"></circle>
+  </g>
+</svg>

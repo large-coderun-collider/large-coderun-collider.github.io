@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-label="LCRC layout: Accelerator + four detectors on the collider ring">
+  <defs>
+    <style>
+      :root{
+        --bg:#0f0f10;
+        --fg:#e8e8e8;
+        --muted:#a9a9a9;
+        --orange:#ff6a00;
+        --violet:#7a2bff;
+        --violet2:#b06cff;
+        --border:#262626;
+      }
+      .bg{fill:var(--bg);}
+      .ringOuter{fill:none;stroke:var(--violet);stroke-width:20;opacity:.95;}
+      .ringInner{fill:none;stroke:var(--violet2);stroke-width:4;opacity:.55;}
+
+      .beamO{fill:none;stroke:var(--orange);stroke-width:4;opacity:.9;stroke-linecap:round;stroke-linejoin:round;}
+      .beamOSoft{fill:none;stroke:var(--orange);stroke-width:10;opacity:.08;stroke-linecap:round;stroke-linejoin:round;}
+
+      .beamV{fill:none;stroke:var(--violet2);stroke-width:3.5;opacity:.75;stroke-linecap:round;stroke-linejoin:round;}
+      .beamVSoft{fill:none;stroke:var(--violet2);stroke-width:9;opacity:.06;stroke-linecap:round;stroke-linejoin:round;}
+
+      .det{fill:rgba(255,255,255,0.02);stroke:var(--orange);stroke-width:2.5;}
+      .det2{fill:rgba(122,43,255,0.10);stroke:var(--violet2);stroke-width:2;}
+
+      .label{
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-weight:800;
+        letter-spacing:.12em;
+        font-size:18px;
+        fill:var(--fg);
+      }
+      .labelOrange{fill:var(--orange);}
+      .labelViolet{fill:var(--violet2);}
+
+      .hint{
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        font-size:12px;
+        fill:rgba(232,232,232,0.35);
+        letter-spacing:.08em;
+      }
+
+      .grid{stroke:rgba(255,255,255,0.04); stroke-width:1;}
+    </style>
+
+    <filter id="glowV" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="blur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+
+    <filter id="glowO" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="blur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+
+    <!-- Smaller arrowheads so they don't overshoot -->
+    <marker id="arrowO" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#ff6a00" opacity="0.95"></path>
+    </marker>
+
+    <marker id="arrowV" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#b06cff" opacity="0.9"></path>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" x="0" y="0" width="1200" height="520"></rect>
+
+  <!-- Subtle grid -->
+  <g opacity="1">
+    <path class="grid" d="M60 0 V520"></path>
+    <path class="grid" d="M180 0 V520"></path>
+    <path class="grid" d="M300 0 V520"></path>
+    <path class="grid" d="M420 0 V520"></path>
+    <path class="grid" d="M540 0 V520"></path>
+    <path class="grid" d="M660 0 V520"></path>
+    <path class="grid" d="M780 0 V520"></path>
+    <path class="grid" d="M900 0 V520"></path>
+    <path class="grid" d="M1020 0 V520"></path>
+    <path class="grid" d="M1140 0 V520"></path>
+
+    <path class="grid" d="M0 60 H1200"></path>
+    <path class="grid" d="M0 140 H1200"></path>
+    <path class="grid" d="M0 220 H1200"></path>
+    <path class="grid" d="M0 300 H1200"></path>
+    <path class="grid" d="M0 380 H1200"></path>
+    <path class="grid" d="M0 460 H1200"></path>
+  </g>
+
+  <!-- Main ring (center 720,260) -->
+  <g filter="url(#glowV)">
+    <circle class="ringOuter" cx="720" cy="260" r="165"></circle>
+    <circle class="ringInner" cx="720" cy="260" r="145"></circle>
+  </g>
+
+  <!-- Accelerator block (moved closer) -->
+  <g>
+    <rect class="det2" x="120" y="220" width="210" height="90" rx="14"></rect>
+    <text class="label labelViolet" x="225" y="270" text-anchor="middle">ACCELERATOR</text>
+  </g>
+
+  <!-- Injection beam: ends exactly at an entry point on the ring (no overshoot) -->
+  <!-- Entry point ~ (594,188) (10 o'clock on inner ring) -->
+  <g filter="url(#glowO)">
+    <path class="beamOSoft" d="M330 265 C 420 215, 505 150, 594 188"></path>
+    <path class="beamO" marker-end="url(#arrowO)" d="M330 265 C 420 215, 505 150, 594 188"></path>
+  </g>
+
+  <!-- Detectors on the ring -->
+  <!-- LCRCb left on horizontal axis -->
+  <g>
+    <rect class="det" x="470" y="228" width="120" height="64" rx="14"></rect>
+    <text class="label labelOrange" x="530" y="268" text-anchor="middle">LCRCb</text>
+  </g>
+
+  <!-- CMS right -->
+  <g>
+    <rect class="det" x="850" y="228" width="120" height="64" rx="14"></rect>
+    <text class="label labelOrange" x="910" y="268" text-anchor="middle">CMS</text>
+  </g>
+
+  <!-- MAPS top -->
+  <g>
+    <rect class="det" x="660" y="78" width="120" height="64" rx="14"></rect>
+    <text class="label labelOrange" x="720" y="118" text-anchor="middle">MAPS</text>
+  </g>
+
+  <!-- BOB bottom -->
+  <g>
+    <rect class="det" x="660" y="378" width="120" height="64" rx="14"></rect>
+    <text class="label labelOrange" x="720" y="418" text-anchor="middle">BOB</text>
+  </g>
+
+  <!-- Two counter-rotating beams on the ring (collision vibe, clean, away from labels) -->
+  <!-- Use a slightly smaller radius so arrows don't touch detector boxes -->
+  <g filter="url(#glowO)">
+    <!-- Clockwise-ish (orange) top-right arc: from angle -60 to -20 on r=120 -->
+    <path class="beamOSoft" d="M780 156 A120 120 0 0 1 833 219"></path>
+    <path class="beamO" marker-end="url(#arrowO)" d="M780 156 A120 120 0 0 1 833 219" opacity="0.65"></path>
+  </g>
+
+  <g filter="url(#glowV)">
+    <!-- Counter-clockwise-ish (violet) bottom-right arc: from angle 60 to 20 on r=120 -->
+    <path class="beamVSoft" d="M780 364 A120 120 0 0 0 833 301"></path>
+    <path class="beamV" marker-end="url(#arrowV)" d="M780 364 A120 120 0 0 0 833 301"></path>
+  </g>
+
+  <text class="hint" x="1140" y="502" text-anchor="end">LCRC</text>
+</svg>

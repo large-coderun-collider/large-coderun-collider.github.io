@@ -4,37 +4,66 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>LCRC — Large Code-Run Collider</title>
+
   <link rel="stylesheet" href="/assets/site.css" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"9ea68f33c8074c29a95c76af14a29f26"}'></script>
+  <!-- End Cloudflare Web Analytics -->
 </head>
 
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9ea68f33c8074c29a95c76af14a29f26"}'></script><!-- End Cloudflare Web Analytics -->
-
 <body>
-  <header class="top">
-    <div class="brand">
-      <div class="mark">LCRC</div>
-      <div class="tag">Large Code-Run Collider</div>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand-link" href="/" aria-label="Home">
+        <img class="brand-logo" src="/assets/logo-lcrc.svg" alt="Large Code-Run Collider">
+      </a>
+
+      <div class="brand-text">
+        <div class="mark">Large Code-Run Collider</div>
+        <div class="tag">Blue. No, yellow! Book – The LCRC Experiment Programme Database</div>
+      </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <p class="lead">
-      A lab notebook of compact experiments: MAPS → BOB → CMS → LCRCb.
-    </p>
+  <main class="main">
+    <div class="container">
+      <p class="lead">Welcome to Large Code-Run Collider (LCRC), my lab notebook for learning by building.</p>
 
-    <section class="cards">
-      <section class="cards">
-       <a class="card" href="/runs/"><h2>Runs</h2><p>Series of Fills.</p></a>
-       <a class="card" href="/fills/"><h2>Fills</h2><p>One concept, one artifact.</p></a>
-       <a class="card" href="/about/"><h2>About</h2><p>Format and principles.</p></a>
+      <p>I publish small, testable artifacts around software engineering: backend, reliability, data, boundaries, and failure modes.</p>
+
+      <p>Each <strong>Fill</strong> is one focused experiment: a tiny repo, a short write-up, and (when useful) a few notes about pitfalls and invariants.</p>
+
+      <p>If the collider doesn’t create a black hole, but instead helps me understand one concrete thing better, the experiment is still a success.</p>
+
+      <section class="layout layout--small">
+        <img class="layout-img" src="/assets/lcrc-layout.svg" alt="LCRC layout diagram">
       </section>
-    <section id="runs">
-      <h3>Run 1</h3>
-      <ul>
-        <li>Fill 0001 — TBD</li>
-      </ul>
-    </section>
+
+      <section class="cards" aria-label="Navigation">
+        <a class="card" href="/runs/"><h2>Runs</h2><p>Series of Fills.</p></a>
+        <a class="card" href="/fills/"><h2>Fills</h2><p>One concept, one artifact.</p></a>
+        <a class="card" href="/about/"><h2>About</h2><p>Format and principles.</p></a>
+      </section>
+
+      <section>
+        <h3>Run 1</h3>
+        <ul class="list">
+          <li><strong>Fill 0001</strong> — Backoff + Jitter (CLI + tests)</li>
+        </ul>
+        <p class="muted">MAPS → BOB → CMS → LCRCb</p>
+      </section>
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2025 Large Code-Run Collider</span>
+      <img class="footer-logo" src="/assets/logo-lcrc-mark.svg" alt="LCRC">
+    </div>
+  </footer>
+
 </body>
 </html>
-

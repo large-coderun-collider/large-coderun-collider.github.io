@@ -1,0 +1,24 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LCRC favicon">
+  <defs>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.6"></feGaussianBlur>
+    </filter>
+  </defs>
+
+  <!-- Палитра -->
+  <!-- purple: #5B2EFF -->
+  <!-- orange: #FF6A00 -->
+
+  <!-- Кольцо -->
+  <circle cx="128" cy="128" r="94" fill="none" stroke="#5B2EFF" stroke-width="14"></circle>
+
+  <!-- Один “детекторный” узел -->
+  <circle cx="128" cy="34" r="10" fill="#5B2EFF"></circle>
+
+  <!-- Пучок (коротко, чтобы не превращалось в кашу в 16px) -->
+  <path d="M70,178 C94,120 140,98 186,104" fill="none" stroke="#FF6A00" stroke-width="14" stroke-linecap="round" opacity="0.75"></path>
+
+  <!-- Столкновение -->
+  <circle cx="192" cy="104" r="18" fill="#FF6A00" opacity="0.25" filter="url(#soft)"></circle>
+  <circle cx="192" cy="104" r="8" fill="#FF6A00"></circle>
+</svg>

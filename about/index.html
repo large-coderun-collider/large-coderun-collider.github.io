@@ -4,38 +4,72 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About — LCRC</title>
+
   <link rel="stylesheet" href="/assets/site.css" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"9ea68f33c8074c29a95c76af14a29f26"}'></script>
+  <!-- End Cloudflare Web Analytics -->
 </head>
 
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9ea68f33c8074c29a95c76af14a29f26"}'></script><!-- End Cloudflare Web Analytics -->
-
 <body>
-  <header class="top">
-    <div class="brand">
-      <div class="mark"><a class="home" href="/">LCRC</a></div>
-      <div class="tag">Large Code-Run Collider</div>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand-link" href="/" aria-label="Home">
+        <img class="brand-logo" src="/assets/logo-lcrc.svg" alt="Large Code-Run Collider">
+      </a>
+
+      <div class="brand-text">
+        <div class="mark">Large Code-Run Collider</div>
+        <div class="tag">Blue. No, yellow! Book – The LCRC Experiment Programme Database</div>
+      </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <h1>About</h1>
-    <p class="lead">
-      LCRC is a lab notebook of compact engineering experiments. Each Fill builds a small, real artifact
-      and documents the underlying concepts behind it.
-    </p>
+  <main class="main">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> / About</p>
 
-    <h3>Format</h3>
-    <ul>
-      <li><strong>MAPS</strong>: Model / Architecture / Patterns / Structure</li>
-      <li><strong>BOB</strong>: Building On the Basics (core concepts and references)</li>
-      <li><strong>CMS</strong>: Code Modeling System (a compact implementation)</li>
-      <li><strong>LCRCb</strong>: beauty detector (tests, pitfalls, best practices)</li>
-    </ul>
+      <h1 class="page-title">About</h1>
+      <p class="lead">LCRC is a personal engineering and art project: I study concepts by implementing small, testable artifacts and writing short notes about what I learned.</p>
 
-    <p>
-      Source of truth lives on GitHub. The website is a clean entry point and index.
-    </p>
+      <p>The CERN framing is a literary device. You’ll find small easter eggs and playful naming throughout the site. Still, the real goal is practical clarity.</p>
+
+      <blockquote class="quote">What I can’t build, I don’t understand.</blockquote>
+
+      <p>Most fills are written in <strong>Python</strong> (fast feedback, rich ecosystem). Other languages appear when they add a useful angle.</p>
+
+      <section class="layout">
+        <img class="layout-img" src="/assets/lcrc-layout.svg" alt="LCRC layout diagram">
+      </section>
+
+      <h3>Fill structure</h3>
+      <ul class="list">
+        <li><strong>Accelerator</strong>: a short introduction and the problem statement.</li>
+        <li><strong>MAPS</strong> — <em>Model / Architecture / Patterns / Structure</em>: what we’re building and why.</li>
+        <li><strong>BOB</strong> — <em>Building on Basics</em>: constraints, invariants, trade-offs, references.</li>
+        <li><strong>CMS</strong> — <em>Compact Modeling System</em>: the implementation (language is a tool, not a religion).</li>
+        <li><strong>LCRCb</strong> — <em>beauty detector</em>: tests, edge cases, failure modes, pitfalls, small improvements.</li>
+      </ul>
+
+      <h3>Scope</h3>
+      <p>Fills can be “mini systems” or just algorithms. If it’s small, testable, and teaches something real, it belongs here.</p>
+
+      <h3>Repositories</h3>
+      <p class="muted">
+        This site is the narrative. The code lives in the experiments repository.
+      </p>
+    </div>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2025 Large Code-Run Collider</span>
+      <img class="footer-logo" src="/assets/logo-lcrc-mark.svg" alt="LCRC">
+    </div>
+  </footer>
+
 </body>
 </html>
-
