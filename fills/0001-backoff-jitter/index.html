@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fill 0001 — Backoff & Jitter — LCRC</title>
+
+  <link rel="stylesheet" href="/assets/site.css" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"9ea68f33c8074c29a95c76af14a29f26"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand-link" href="/" aria-label="Home">
+        <img class="brand-logo" src="/assets/logo-lcrc.svg" alt="Large Code-Run Collider">
+      </a>
+
+      <div class="brand-text">
+        <div class="mark">Large Code-Run Collider</div>
+        <div class="tag">Blue. No, yellow! Book – The LCRC Experiment Programme Database</div>
+        <div class="muted">Current collider status: Run 01 | Fill 0001</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="navbar">
+        <a class="backlink" href="/fills/">← All fills</a>
+        <span class="badge">Run 01 · Fill 0001</span>
+      </div>
+
+      <h1 class="page-title">Fill 0001 — Backoff and Jitter</h1>
+      <p class="lead">A compact, testable model of retry delays, with a CLI to simulate schedules.</p>
+
+      <p class="muted">
+        Code: <a href="https://github.com/large-coderun-collider/lcrc-experiments/tree/main/fills/0001-backoff-jitter">lcrc-experiments/fills/0001-backoff-jitter</a>
+      </p>
+
+      <h3>Accelerator</h3>
+      <p>
+        Retries are a reliability tool, and also a reliability hazard.
+        This fill models exponential backoff with jitter, so retries remain controlled under load.
+      </p>
+
+      <h3>MAPS</h3>
+      <ul class="list">
+        <li>Input: retry attempt number (0..N), policy parameters (base, factor, cap, jitter).</li>
+        <li>Output: a delay value (seconds).</li>
+        <li>Deliverable: a small Python package + CLI + unit tests.</li>
+      </ul>
+
+      <h3>BOB</h3>
+      <p>References worth reading:</p>
+      <ul class="list">
+        <li><a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/" target="_blank" rel="noopener">AWS: Exponential Backoff and Jitter</a></li>
+        <li><a href="https://sre.google/sre-book/handling-overload/">Google SRE Book — Handling Overload</a></li>
+        <li><a href="https://cloud.google.com/storage/docs/retry-strategy">Google Cloud — Retry strategy / exponential backoff</a></li>
+      </ul>
+
+      <h3>CMS</h3>
+      <p>CLI example:</p>
+      <pre><code>lcrc-backoff --max-attempts 6 --base 0.5 --cap 10 --seed 42 --json</code></pre>
+
+      <h3>LCRCb</h3>
+      <ul class="list">
+        <li>Determinism: fixed seed must reproduce schedules.</li>
+        <li>Bounds: jittered delays must remain within expected ranges.</li>
+        <li>Cap: exponential growth must stop at the cap.</li>
+      </ul>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-meta">
+        <span>© 2025 Large Code-Run Collider</span>
+        <span class="muted">·</span>
+        <span class="footer-links">
+          <a href="https://linkedin.com/in/large-coderun-collider">LinkedIn</a>
+          <span class="muted">·</span>
+          <a href="https://github.com/large-coderun-collider">GitHub</a>
+        </span>
+      </div>
+      <img class="footer-logo" src="/assets/logo-lcrc-mark.svg" alt="LCRC">
+    </div>
+  </footer>
+
+</body>
+</html>
