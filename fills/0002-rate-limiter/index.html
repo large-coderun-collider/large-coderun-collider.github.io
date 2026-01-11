@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fill 0002 — Rate Limiter (Token Bucket) — LCRC</title>
+
+  <link rel="stylesheet" href="/assets/site.css" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"9ea68f33c8074c29a95c76af14a29f26"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand-link" href="/" aria-label="Home">
+        <img class="brand-logo" src="/assets/logo-lcrc.svg" alt="Large Code-Run Collider">
+      </a>
+
+      <div class="brand-text">
+        <div class="mark">Large Code-Run Collider</div>
+        <div class="tag">Blue. No, yellow! Book – The LCRC Experiment Programme Database</div>
+        <div class="muted">Current collider status: Run 01 | Fill 0002</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="navbar">
+        <a class="backlink" href="/fills/">← All fills</a>
+        <span class="badge">Run 01 · Fill 0002</span>
+      </div>
+
+      <h1 class="page-title">Fill 0002 — Rate Limiter (Token Bucket)</h1>
+      <p class="lead">A compact, testable token bucket rate limiter, with a CLI for inspection and simulation.</p>
+
+      <p class="muted">
+        Code: <a href="https://github.com/large-coderun-collider/lcrc-experiments/tree/main/fills/0002-rate-limiter">lcrc-experiments/fills/0002-rate-limiter</a>
+      </p>
+
+      <h3>Accelerator</h3>
+      <p>
+        Rate limiting bounds request throughput and burstiness in order to protect downstream systems,
+        stabilize latency, and reduce cascading failure amplification.
+        This fill models a token bucket limiter with deterministic, test-friendly time control and a CLI
+        that exposes behavior in both human-readable and JSON formats.
+      </p>
+
+      <h3>MAPS</h3>
+      <ul class="list">
+        <li><strong>Model:</strong> Token Bucket (tokens refilled at a constant rate, capped by capacity).</li>
+        <li><strong>State:</strong> current token count + last timestamp.</li>
+        <li><strong>Parameters:</strong> rate (tokens/sec), capacity (tokens), cost (tokens/request), start_full.</li>
+        <li><strong>Operations:</strong> allow(cost) → bool, wait_time(cost) → seconds.</li>
+        <li><strong>Time:</strong> injected clock for determinism; backward deltas clamped to 0.</li>
+      </ul>
+
+      <h3>BOB</h3>
+      <p>References:</p>
+      <ul class="list">
+        <li><a href="https://en.wikipedia.org/wiki/Token_bucket" target="_blank" rel="noopener">Token Bucket (Wikipedia)</a></li>
+        <li><a href="https://datatracker.ietf.org/doc/html/rfc2697" target="_blank" rel="noopener">RFC 2697 (Single Rate Three Color Marker)</a></li>
+        <li><a href="https://sre.google/sre-book/handling-overload/" target="_blank" rel="noopener">Google SRE Book — Handling Overload</a></li>
+      </ul>
+
+      <h3>CMS</h3>
+      <p>CLI examples:</p>
+      <pre><code>lcrc-ratelimit check --rate 5 --capacity 10 --cost 1
+lcrc-ratelimit simulate --rate 2 --capacity 5 --n 12 --interval 0.25
+lcrc-ratelimit simulate --rate 2 --capacity 5 --n 12 --interval 0.25 --json</code></pre>
+
+      <p>Docker examples (optional):</p>
+      <pre><code>docker build -t lcrc-fill-0002 .
+docker run --rm lcrc-fill-0002
+docker run --rm lcrc-fill-0002 lcrc-ratelimit simulate --rate 2 --capacity 5 --n 12 --interval 0.25 --json</code></pre>
+
+      <h3>LCRCb</h3>
+      <ul class="list">
+        <li><strong>Determinism:</strong> injected clock enables reproducible, sleep-free tests.</li>
+        <li><strong>Bounds:</strong> tokens never exceed capacity; negative time deltas do not refill.</li>
+        <li><strong>Semantics:</strong> allow() and wait_time() remain consistent under varying cost.</li>
+      </ul>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-meta">
+        <span>© 2025 Large Code-Run Collider</span>
+        <span class="muted">·</span>
+        <span class="footer-links">
+          <a href="https://linkedin.com/in/large-coderun-collider">LinkedIn</a>
+          <span class="muted">·</span>
+          <a href="https://github.com/large-coderun-collider">GitHub</a>
+        </span>
+      </div>
+      <img class="footer-logo" src="/assets/logo-lcrc-mark.svg" alt="LCRC">
+    </div>
+  </footer>
+
+</body>
+</html>
