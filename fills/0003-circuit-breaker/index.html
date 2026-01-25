@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fill 0003 — Circuit Breaker — LCRC</title>
+
+  <link rel="stylesheet" href="/assets/site.css" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"9ea68f33c8074c29a95c76af14a29f26"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand-link" href="/" aria-label="Home">
+        <img class="brand-logo" src="/assets/logo-lcrc.svg" alt="Large Code-Run Collider">
+      </a>
+
+      <div class="brand-text">
+        <div class="mark">Large Code-Run Collider</div>
+        <div class="tag">Blue. No, yellow! Book – The LCRC Experiment Programme Database</div>
+        <div class="muted">Current collider status: Run 01 | Fill 0003</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="navbar">
+        <a class="backlink" href="/fills/">← All fills</a>
+        <span class="badge">Run 01 · Fill 0003</span>
+      </div>
+
+      <h1 class="page-title">Fill 0003 — Circuit Breaker</h1>
+      <p class="lead">A compact, testable model of the circuit breaker pattern, with a CLI to simulate state transitions.</p>
+
+      <p class="muted">
+        Code:
+        <a href="https://github.com/large-coderun-collider/lcrc-experiments/tree/main/fills/0003-circuit-breaker">
+          lcrc-experiments/fills/0003-circuit-breaker
+        </a>
+      </p>
+
+      <h3>Accelerator</h3>
+      <p>
+        A circuit breaker prevents cascading failures by failing fast when a downstream dependency is persistently unhealthy.
+        Instead of accumulating queues and timeouts, traffic is stopped, then cautiously reintroduced after a cooldown.
+      </p>
+
+      <h3>MAPS</h3>
+      <ul class="list">
+        <li>States: <strong>closed</strong> → <strong>open</strong> → <strong>half-open</strong>.</li>
+        <li>Open threshold: consecutive failures trip the breaker.</li>
+        <li>Cooldown: time window where calls are rejected (fail-fast).</li>
+        <li>Half-open: trial calls; enough successes close the breaker, a failure reopens it.</li>
+        <li>Deliverable: a small Python package + CLI + unit tests.</li>
+      </ul>
+
+      <h3>BOB</h3>
+      <p>References worth reading:</p>
+      <ul class="list">
+        <li><a href="https://martinfowler.com/bliki/CircuitBreaker.html" target="_blank" rel="noopener">Martin Fowler — Circuit Breaker</a></li>
+        <li><a href="https://sre.google/sre-book/handling-overload/" target="_blank" rel="noopener">Google SRE Book — Handling Overload</a></li>
+      </ul>
+
+      <h3>CMS</h3>
+      <p>CLI example:</p>
+      <pre><code>lcrc-breaker simulate --cooldown 2 --failure-threshold 3 --success-threshold 2 --dt 0.1 --seq ok,fail,fail,fail,call,wait:2.0,ok,ok --json</code></pre>
+
+      <h3>LCRCb</h3>
+      <ul class="list">
+        <li>Open is fail-fast until cooldown expires.</li>
+        <li>Half-open success threshold closes; failure reopens.</li>
+        <li>Time is injected (deterministic tests, no real sleeps).</li>
+      </ul>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-meta">
+        <span>© 2025 Large Code-Run Collider</span>
+        <span class="muted">·</span>
+        <span class="footer-links">
+          <a href="https://linkedin.com/in/large-coderun-collider">LinkedIn</a>
+          <span class="muted">·</span>
+          <a href="https://github.com/large-coderun-collider">GitHub</a>
+        </span>
+      </div>
+      <img class="footer-logo" src="/assets/logo-lcrc-mark.svg" alt="LCRC">
+    </div>
+  </footer>
+
+</body>
+</html>
