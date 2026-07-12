@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fill 0004 — Bulkhead & Bounded Queue — LCRC</title>
+
+  <link rel="stylesheet" href="/assets/site.css" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"9ea68f33c8074c29a95c76af14a29f26"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand-link" href="/" aria-label="Home">
+        <img class="brand-logo" src="/assets/logo-lcrc.svg" alt="Large Code-Run Collider">
+      </a>
+
+      <div class="brand-text">
+        <div class="mark">Large Code-Run Collider</div>
+        <div class="tag">Blue. No, yellow! Book – The LCRC Experiment Programme Database</div>
+        <div class="muted">Current collider status: Run 00 (Warm-up) | Completed</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+
+      <div class="navbar">
+        <a class="backlink" href="/fills/">← All fills</a>
+        <span class="badge">Run 00 (Warm-up) · Fill 0004</span>
+      </div>
+
+      <h1 class="page-title">Fill 0004 — Bulkhead & Bounded Queue</h1>
+      <p class="lead">A compact, testable implementation of the Bulkhead concurrency pattern with load shedding.</p>
+
+      <p class="muted">
+        Code:
+        <a href="https://github.com/large-coderun-collider/lcrc-experiments/tree/main/fills/0004-bulkhead-queue">
+          lcrc-experiments/fills/0004-bulkhead-queue
+        </a>
+      </p>
+
+      <h3>Accelerator</h3>
+      <p>
+        When a system experiences a massive traffic spike or slow downstream processing, unbounded concurrency will quickly deplete system memory, thread pools, and file descriptors.
+        A Bulkhead isolates resources and enforces strict concurrency limits. By bounding both active execution slots and the waiting queue, the system gracefully sheds excess load (fail-fast rejection) instead of crashing from resource starvation.
+      </p>
+
+      <h3>MAPS</h3>
+      <ul class="list">
+        <li><strong>Concurrency Gate:</strong>
+          <ul>
+            <li><code>ACCEPTED</code>: slot acquired immediately; task executes.</li>
+            <li><code>QUEUED</code>: all active slots full; task waits in bounded queue.</li>
+            <li><code>REJECTED</code>: both active slots and queue are saturated (Load Shedding).</li>
+          </ul>
+        </li>
+        <li><strong>State variables:</strong> <code>active_count</code> (currently executing) and <code>queue_count</code> (waiting in line).</li>
+        <li><strong>Parameters:</strong> <code>max_concurrent</code> and <code>max_queue</code>.</li>
+      </ul>
+
+      <h3>BOB</h3>
+      <p>References and Concepts:</p>
+      <ul class="list">
+        <li>Resource isolation prevents localized slowness from cascading into total host failure.</li>
+        <li>Bounded queues prevent Out-Of-Memory (OOM) crashes under sustained load spikes.</li>
+        <li><strong>Load Shedding</strong> (rejecting excess traffic instantly) maintains predictable latency for accepted tasks.</li>
+      </ul>
+
+      <h3>CMS</h3>
+      <p>Simulate a sequence of acquisitions and releases:</p>
+      <pre><code>lcrc-bulkhead simulate --max-concurrent 2 --max-queue 1 --seq acquire,acquire,acquire,acquire,release,release --json</code></pre>
+
+      <h3>LCRCb</h3>
+      <ul class="list">
+        <li>Zero external dependencies (pure Python standard library).</li>
+        <li>Automatic queue promotion upon slot release.</li>
+        <li>Clear separation between non-blocking admission checking (<code>try_acquire</code>) and task execution (<code>submit</code>).</li>
+      </ul>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-meta">
+        <span>© 2026 Large Code-Run Collider</span>
+        <span class="muted">·</span>
+        <span class="footer-links">
+          <a href="https://linkedin.com/in/large-coderun-collider">LinkedIn</a>
+          <span class="muted">·</span>
+          <a href="https://github.com/large-coderun-collider">GitHub</a>
+        </span>
+      </div>
+      <img class="footer-logo" src="/assets/logo-lcrc-mark.svg" alt="LCRC">
+    </div>
+  </footer>
+
+</body>
+</html>
